@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chdsxt.crm.po">
+	<class name="Module" table="crm_module" >		
+		<id  name="moduleId"  column="module_id" >
+			<generator class="sequence">
+				<param name="sequence">seq_crm_module</param>
+			</generator>
+		</id>
+		<property name="moduleCode" column="module_Code"  />
+		<property name="moduleName" column="module_Name"  />
+		<property name="moduleUrl" column="module_Url" />
+		<set  name="rmSet"    inverse="true">
+			<key  column="module_id" />
+			<one-to-many  class="RoleModule"   />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.action.extension" value="do"  />
+    <package name="default" namespace="/" extends="struts-default">
+    	<interceptors>
+    		<interceptor name="limitsInter" class="com.chdsxt.crm.interceptor.LimitsInterceptor" />
+    		<interceptor-stack name="myStack">
+    				<interceptor-ref name="limitsInter"/>
+    				<interceptor-ref name="defaultStack"/>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="myStack"/>
+    	<global-results>
+    		<result  name="nopower">/nopower.jsp</result>
+    	</global-results>
+        <action name="loginAction" class="com.chdsxt.crm.action.LoginAction"  method="getLoginValidate" >
+        	 <result name="login">/index.jsp</result>
+        	 <result name="main">/main.jsp</result>
+        </action>
+         <action name="userAction" class="com.chdsxt.crm.action.UserAction"  method="queryUserList" >
+        	 <result name="login">/index.jsp</result>
+        	 <result name="queryUserList">/user/queryUserList.jsp</result>
+        	 <result name="queryRoleList">/role/queryRoleList.jsp</result>
+        	 <result name="updatePwd">/user/updatePwd.jsp</result>
+        	 <result name="updPwdSuccess">user/updPwdSuccess.jsp</result>
+        	 <result name="getUserInfoById">/user/getUserInfoById.jsp</result>
+        </action>
+        <action name="roleAction" class="com.chdsxt.crm.action.RoleAction"  >
+        	 <result name="roleJsonArray"  type="stream">
+        	 	<param name="inputName">inputStream</param>
+        	 </result>
+        </action>
+        <action name="moduleAction" class="com.chdsxt.crm.action.ModuleAction"  method="queryModuleList" >
+        	 <result name="queryModuleList">/module/queryModuleList.jsp</result>
+        	 <result name="queryModuleListForScan">/module/queryModuleListForScan.jsp</result>
+        	 <result name="queryModuleLimitsInfo">/user/loginUserInfo.jsp</result>	 
+        </action>
+        <action name="roleModuleAction" class="com.chdsxt.crm.action.RoleModuleAction"  >
+        </action>
+        <action name="logAction" class="com.chdsxt.crm.action.LogAction"  method="queryLogList" >
+        	 <result name="queryLogList">/log/queryLogList.jsp</result>
+        	 <result name="queryAndDelLog">/log/queryAndDelLog.jsp</result>
+        	 <result name="addBeforeLog">/log/addLog.jsp</result>
+        	 <result name="updateBeforeLog">/log/updLog.jsp</result>
+        </action>
+        <action name="typeAction" class="com.chdsxt.crm.action.TypeAction"  method="queryTypeList" >
+        	 <result name="queryTypeList">/type/queryTypeList.jsp</result>
+        	 <result name="queryAndDelType">/type/queryAndDelType.jsp</result>
+        	 <result name="addBeforeType">/type/addType.jsp</result>
+        	 <result name="updateBeforeType">/type/updType.jsp</result>
+        </action>
+        <action name="messageAction" class="com.chdsxt.crm.action.MessageAction"  method="queryMessageList" >
+        	 <result name="queryMessageList">/msg/queryMsgList.jsp</result>
+        </action>
+         <action name="xlsExpAction" class="com.chdsxt.crm.action.XlsExpAction" >
+        	 <result name="xlsexpsuccess">/xlsexpsuccess.jsp</result>
+        	 <result name="queryTypeList">/type/queryTypeList.jsp</result>
+        </action>
+    </package>
+</struts>

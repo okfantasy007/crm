@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chdsxt.crm.po">
+	<class name="Log" table="crm_log" >		
+		<id  name="logId"  column="log_id" >
+			<generator class="sequence">
+				<param name="sequence">seq_crm_log</param>
+			</generator>
+		</id>
+		<property name="logName" column="log_name"  />
+		<property name="logContent" column="log_content"  />
+		<property name="logCreateTime" column="log_createtime" />
+		<property name="logAuthor" column="log_author"  />
+		<property name="logUpdTime" column="log_updtime" />
+	</class>
+</hibernate-mapping>

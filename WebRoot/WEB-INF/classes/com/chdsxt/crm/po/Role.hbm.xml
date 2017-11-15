@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chdsxt.crm.po">
+	<class name="Role" table="crm_role" >		
+		<id  name="roleId"  column="role_id" >
+			<generator class="sequence">
+				<param name="sequence">seq_crm_role</param>
+			</generator>
+		</id>
+		<property name="roleName" column="role_name"  />
+		<property name="roleDesc" column="role_desc" />
+		<!-- 对应角色  用户表   的  一方 -->
+		<set  name="userSet"  table="crm_user_role">
+			<key  column="role_id" />
+			<many-to-many  class="User"  column="user_id" />
+		</set>
+		<!-- 对应角色  模块表   的  一方 -->
+		<set  name="rmSet"    inverse="true">
+			<key  column="role_id" />
+			<one-to-many  class="RoleModule"   />
+		</set>
+	</class>
+</hibernate-mapping>

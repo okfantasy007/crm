@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chdsxt.crm.po">
+	<class name="Msg" table="crm_msg" >		
+		<id  name="msgId"  column="msg_id" >
+			<generator class="sequence">
+				<param name="sequence">seq_crm_msg</param>
+			</generator>
+		</id>
+		<property name="msgName" column="msg_name"  />
+		<property name="msgContent" column="msg_content"  />
+		<property name="msgCreateTime" column="msg_createtime" />
+		<property name="msgAuthor" column="msg_author"  />
+	</class>
+</hibernate-mapping>

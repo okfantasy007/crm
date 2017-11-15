@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chdsxt.crm.po">
+	<class name="RoleModule" table="crm_role_module" >		
+		<id  name="rmId"  column="rm_id" >
+			<generator class="sequence">
+				<param name="sequence">seq_crm_role_Module</param>
+			</generator>
+		</id>
+		<property name="limitsCode" column="limits_code"  />
+		<many-to-one name="role"  class="Role"    column="role_id"  />
+		<many-to-one name="module" class="Module" column="module_id"    />
+	</class>
+</hibernate-mapping>

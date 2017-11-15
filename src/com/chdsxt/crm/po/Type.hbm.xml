@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chdsxt.crm.po">
+	<class name="Type" table="crm_type" >		
+		<id  name="typeId"  column="type_id" >
+			<generator class="sequence">
+				<param name="sequence">seq_crm_type</param>
+			</generator>
+		</id>
+		<property name="typeName" column="type_name"  />
+		<property name="typeDesc" column="type_desc"  />
+		<property name="typeCreateTime" column="type_createtime"  />
+		<property name="typeUpdTime" column="type_updtime"  />
+	</class>
+</hibernate-mapping>

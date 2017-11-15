@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chdsxt.crm.po">
+	<class name="Menu" table="crm_menu" >		
+		<id  name="menuId"  column="menu_id" >
+			<generator class="sequence">
+				<param name="sequence">seq_crm_menu</param>
+			</generator>
+		</id>
+		<property name="menuCode" column="menu_code"  />
+		<property name="menuName" column="menu_name"  />
+		<property name="menuLevel" column="menu_Level" />
+		<!-- 自己和自己是一个一对多的关系   一个 父菜单对应多个子菜单 -->
+		<set name="menuSet"   inverse="true">
+			<key column="parent_id" />
+			<one-to-many  class="Menu"/>
+		</set>
+		<!-- 一方 -->
+		<many-to-one name="parentMenu" class="Menu" column="parent_id" />
+		<property name="menuUrl" column="menu_Url" />
+	</class>
+</hibernate-mapping>
